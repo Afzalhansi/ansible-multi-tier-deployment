@@ -1,0 +1,25 @@
+---
+- name: Configure web server on EC2
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Deploy custom index.html
+      copy:
+        content: "<h1>Deployed with Ansible by Afzal</h1>\n"
+        dest: /var/www/html/index.html
+
+    - name: Ensure nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
