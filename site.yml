@@ -1,0 +1,14 @@
+---
+- name: Configure app servers
+  hosts: app_server_1,app_server_2
+  become: true
+  roles:
+    - common
+    - webserver
+
+- name: Configure load balancer
+  hosts: lb_server
+  become: true
+  roles:
+    - common
+    - loadbalancer

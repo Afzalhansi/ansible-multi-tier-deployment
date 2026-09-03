@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  author: Afzal
+  description: Baseline setup applied to all servers (updates, common packages)
+  company: Personal Project
+  license: MIT
+  min_ansible_version: "2.9"
+  galaxy_tags: []
+dependencies: []

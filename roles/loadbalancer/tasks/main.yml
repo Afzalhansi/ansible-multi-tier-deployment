@@ -1,0 +1,32 @@
+---
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Install apache2-utils (for htpasswd)
+  ansible.builtin.apt:
+    name: apache2-utils
+    state: present
+
+- name: Create htpasswd file for basic auth
+  community.general.htpasswd:
+    path: /etc/nginx/.htpasswd
+    name: admin
+    password: "{{ vault_basic_auth_password }}"
+    owner: root
+    group: www-data
+    mode: '0640'
+
+- name: Deploy load balancer config
+  ansible.builtin.template:
+    src: lb.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: '0644'
+  notify: Restart nginx
+
+- name: Ensure nginx is running and enabled
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true

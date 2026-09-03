@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  author: Afzal
+  description: Installs and configures Nginx as an application web server
+  company: Personal Project
+  license: MIT
+  min_ansible_version: "2.9"
+  galaxy_tags: []
+dependencies: []
