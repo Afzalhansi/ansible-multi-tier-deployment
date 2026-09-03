@@ -30,7 +30,7 @@ All servers are discovered dynamically from AWS (no hardcoded IPs anywhere in th
         └───────────────────┘            └───────────────────┘
 
     Control node (WSL2 + Ansible) configures all 3 over SSH
-```
+
 
 - **Control node**: WSL2 (Ubuntu), running Ansible — no agents installed on any target
 - **Managed nodes**: 3x AWS EC2 instances (Ubuntu 24.04), discovered live via AWS's API
