@@ -46,8 +46,6 @@ All servers are discovered dynamically from AWS (no hardcoded IPs anywhere in th
 - **CI pipeline** (`.github/workflows/lint.yml`) — GitHub Actions runs `ansible-lint` at the `production` profile on every push and pull request, catching style and security issues before they reach `main`.
 
 ## Project structure
-
-```
 .
 ├── aws_ec2.yml                        # Dynamic inventory config (AWS EC2 plugin)
 ├── group_vars/
@@ -62,7 +60,6 @@ All servers are discovered dynamically from AWS (no hardcoded IPs anywhere in th
 │       └── templates/lb.conf.j2
 ├── site.yml                           # Top-level playbook tying roles to host groups
 └── .github/workflows/lint.yml         # CI: ansible-lint on every push
-```
 
 ## Prerequisites
 
@@ -96,5 +93,3 @@ All servers are discovered dynamically from AWS (no hardcoded IPs anywhere in th
 - Encrypting secrets at rest with Ansible Vault and wiring them into a real security control (HTTP Basic Auth)
 - Setting up a CI pipeline so code quality is enforced automatically, not manually
 - Managing AWS IAM users with least-privilege permissions, and handling credential rotation after an exposure
-```
-
